@@ -27,10 +27,12 @@ if (navigator.geolocation) {
         request.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 let response = JSON.parse(this.responseText);
+				console.log(response);
                 var address_components = response.results[0].address_components;
                 address_components.map(function(component) {
                     if (component.types.includes('postal_code')) {
                         var zipCode = component.long_name.toString();
+						console.log(zipCode);
                         if (zipCode.match('[0-9]{5}') !== null && zipCode.length === 5) {
                             zipElem.value = zipCode;
                             $("#modalContainer").modal();

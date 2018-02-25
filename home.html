@@ -25,7 +25,7 @@
         <a href="#pricing">Pricing</a>
         <a href="#testimonals">Testimonals</a>
         <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#modalContainer"
-                id="SubscribeBtn">
+                id="SubscribeBtn" onclick="closeFunc()">
             Subscribe
         </button>
     </div>
@@ -186,7 +186,7 @@
             <div class="modal-body">
                 <label>ZIP Code</label>
                 <div class="input-group mb-3">
-                    <input type="text"
+                    <input type="number"
                            id="zip"
                            title="Five digit zip code"
                            class="form-control"
