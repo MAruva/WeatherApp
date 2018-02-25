@@ -69,3 +69,8 @@ subscribeElem.addEventListener('click', function(event) {
 		invalidComp.style.fontsize = "small";
     }
 });
+
+function closeFunc() {
+	document.getElementById("invalidInputMessage").innerHTML = "";
+	zipElem.style.borderColor = "grey";
+}
