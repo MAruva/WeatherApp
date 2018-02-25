@@ -57,11 +57,15 @@ checkBoxElem.addEventListener('change', function(event) {
 
 subscribeElem.addEventListener('click', function(event) {
     if (zipElem.value.match('[0-9]{5}') !== null && zipElem.value.length === 5) {
+		document.getElementById("invalidInputMessage").innerHTML = "";
         $('#modalContainer').modal('hide');
         zipElem.style.borderColor = "grey";
         localStorage.setItem('click_count', click_count++);
         window.alert('Users Subscribed: ' + click_count);
     } else {
         zipElem.style.borderColor = "red";
+		var invalidComp = document.getElementById("invalidInputMessage");
+		invalidComp.innerHTML = "<span style='color:#FF0000'>Invalid Zip Code!!!</span>";
+		invalidComp.style.fontsize = "small";
     }
 });

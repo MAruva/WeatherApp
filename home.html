@@ -186,15 +186,14 @@
             <div class="modal-body">
                 <label>ZIP Code</label>
                 <div class="input-group mb-3">
-                    <input type="number"
+                    <input type="text"
                            id="zip"
-                           pattern="[0-9]{5}"
-                           max="99999"
                            title="Five digit zip code"
                            class="form-control"
                            aria-label="Default"
                            aria-describedby="inputGroup-sizing-default">
                 </div>
+				<p id="invalidInputMessage"></p>
                 <div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
