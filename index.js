@@ -1,12 +1,11 @@
 var subscribeElem = document.getElementById('subscribe');
 var zipElem = document.getElementById('zip');
 var checkBoxElem = document.getElementById('checkbox');
-var bodyElem = document.getElementById('app-body');
 var api_key = 'AIzaSyBwPIs6AtnOsQzLagVL6KbdaDsxWH2_QpY';
 var click_count = 0;
 
 $('.carousel').carousel({
-    interval: 5000
+    interval: 4000
 });
 
 subscribeElem.style.opacity = "0.5";
@@ -15,7 +14,7 @@ zipElem.style.borderColor = "grey";
 
 setTimeout(function(){
    $("#modalContainer").modal();
-}, 1000);
+}, 2000);
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -23,17 +22,14 @@ if (navigator.geolocation) {
         var long = position.coords.longitude;
         var request = new XMLHttpRequest();
         var url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + long + '&key=' + api_key;
-        console.log('URL' + url);
         request.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 let response = JSON.parse(this.responseText);
-				console.log(response);
-                var address_components = response.results[0].address_components;
+				var address_components = response.results[0].address_components;
                 address_components.map(function(component) {
                     if (component.types.includes('postal_code')) {
                         var zipCode = component.long_name.toString();
-						console.log(zipCode);
-                        if (zipCode.match('[0-9]{5}') !== null && zipCode.length === 5) {
+						if (zipCode.match('[0-9]{5}') !== null && zipCode.length === 5) {
                             zipElem.value = zipCode;
                             $("#modalContainer").modal();
                         }
@@ -72,7 +68,7 @@ subscribeElem.addEventListener('click', function(event) {
     }
 });
 
-function closeFunc() {
+function closeModal() {
 	document.getElementById("invalidInputMessage").innerHTML = "";
 	zipElem.style.borderColor = "grey";
 }
